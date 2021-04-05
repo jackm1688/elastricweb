@@ -1,0 +1,7 @@
+domain: com.mfz
+repo: elasticweb
+resources:
+- group: elasticweb
+  kind: Elasticweb
+  version: v1
+version: "2"

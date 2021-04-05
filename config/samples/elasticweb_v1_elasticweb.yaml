@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: lemon-dev
+  labels:
+    name: lemon-dev
+---
+apiVersion: elasticweb.com.mfz/v1
+kind: Elasticweb
+metadata:
+  name: elasticweb-sample
+  namespace: lemon-dev
+spec:
+  image: gdsz.harbor.com/library/tomcat:8.0.18-jre8
+  port: 30003
+  singlePodQPS: 500
+  totalPodQPS: 3000

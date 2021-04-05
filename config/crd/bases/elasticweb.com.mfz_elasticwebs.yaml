@@ -1,0 +1,77 @@
+
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.2.5
+  creationTimestamp: null
+  name: elasticwebs.elasticweb.com.mfz
+spec:
+  group: elasticweb.com.mfz
+  names:
+    kind: Elasticweb
+    listKind: ElasticwebList
+    plural: elasticwebs
+    singular: elasticweb
+  scope: Namespaced
+  validation:
+    openAPIV3Schema:
+      description: Elasticweb is the Schema for the elasticwebs API
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          description: ElasticwebSpec defines the desired state of Elasticweb
+          properties:
+            image:
+              type: string
+            port:
+              format: int32
+              type: integer
+            singlePodQPS:
+              format: int32
+              type: integer
+            totalPodQPS:
+              format: int32
+              type: integer
+          required:
+          - image
+          - port
+          - singlePodQPS
+          - totalPodQPS
+          type: object
+        status:
+          description: ElasticwebStatus defines the observed state of Elasticweb
+          properties:
+            realQPS:
+              description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
+                of cluster Important: Run "make" to regenerate code after modifying
+                this file'
+              format: int32
+              type: integer
+          required:
+          - realQPS
+          type: object
+      type: object
+  version: v1
+  versions:
+  - name: v1
+    served: true
+    storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
